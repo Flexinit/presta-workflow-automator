@@ -21,7 +21,7 @@ public class DocumentTypeService {
         return documentTypeRepository.save(documentTypes);
     }
 
-    public List<Optional<DocumentTypes>> getDocumentType() {
+    public List<DocumentTypes> getDocumentType() {
         return documentTypeRepository.getDocumentType();
     }
 }

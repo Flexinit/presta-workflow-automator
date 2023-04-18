@@ -1,8 +1,9 @@
 package com.prestacapital.WorkflowAutomator.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 
 @Setter
@@ -17,7 +18,7 @@ public class Approvers {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.UUID,
+            strategy = GenerationType.SEQUENCE,
             generator = "approver_sequence"
     )
 

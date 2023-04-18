@@ -11,6 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface ApproversRepository extends JpaRepository<Approvers, Long> {
-    @Query("SELECT * FROM Approvers a WHERE a.documentType = ?")
+    @Query(nativeQuery = true, value = "SELECT * FROM Approvers a WHERE a.documentType = ?1")
     List<Optional<Approvers>> getApproverByDocumentType(DocumentTypes documentType);
 }

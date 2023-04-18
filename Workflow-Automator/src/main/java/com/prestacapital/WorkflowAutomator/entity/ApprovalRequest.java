@@ -1,9 +1,9 @@
 package com.prestacapital.WorkflowAutomator.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -18,7 +18,7 @@ public class ApprovalRequest {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.UUID,
+            strategy = GenerationType.SEQUENCE,
             generator = "approval_sequence"
     )
     public Long id;

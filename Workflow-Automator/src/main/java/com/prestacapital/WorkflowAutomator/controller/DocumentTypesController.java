@@ -25,9 +25,8 @@ public class DocumentTypesController {
     }
 
     @GetMapping
-    public List<Optional<DocumentTypes>> getDocumentType(){
+    public List<DocumentTypes> getDocumentType(){
         return documentTypeService.getDocumentType();
     }
-
 
 }

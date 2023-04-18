@@ -1,19 +1,13 @@
-package com.prestacapital.WorkflowAutomator.service;
+package com.prestacapital.ApprovalsInitiator.service;
 
 import com.prestacapital.WorkflowAutomator.Data.ApproveAction;
 import com.prestacapital.WorkflowAutomator.Utils.Utils;
 import com.prestacapital.WorkflowAutomator.entity.ApprovalRequest;
 import com.prestacapital.WorkflowAutomator.repository.ApprovalRequestRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import javax.transaction.Transactional;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,9 +16,7 @@ import java.util.Optional;
 public class ApprovalRequestService {
 
     private final ApprovalRequestRepository approvalRequestRepository;
-    private RestTemplate restTemplate ;
 
-    private RestTemplateBuilder restTemplateBuilder;
     @Autowired
     public ApprovalRequestService(ApprovalRequestRepository approvalRequestRepository) {
         this.approvalRequestRepository = approvalRequestRepository;
@@ -49,25 +41,11 @@ public class ApprovalRequestService {
         if(Objects.equals(approveAction.approved, "Approve")){
 
             approvalRequest.setApproved(true);
-            sendApprovalNotificationToInitiator(approvalRequest);
 
+        }else {
+            approvalRequest.setApproved(false);
         }
 
         return approvalRequest;
-    }
-
-
-    public void sendApprovalNotificationToInitiator(ApprovalRequest approvalRequest) {
-        restTemplate = restTemplateBuilder.build();
-        HttpHeaders headers = new HttpHeaders();
-        // set `content-type` header
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        // set `accept` header
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        // build the request
-        HttpEntity<ApprovalRequest> entity = new HttpEntity<>(approvalRequest, headers);
-        // send POST request
-        restTemplate.postForObject(Utils.URL, entity, ApprovalRequest.class);
-
     }
 }

@@ -1,8 +1,9 @@
 package com.prestacapital.WorkflowAutomator.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,7 +17,7 @@ public class DocumentTypes {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.UUID,
+            strategy = GenerationType.AUTO,
             generator = "doc_sequence"
     )
     public Long id;

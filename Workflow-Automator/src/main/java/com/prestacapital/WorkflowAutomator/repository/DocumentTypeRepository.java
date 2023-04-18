@@ -11,6 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface DocumentTypeRepository extends JpaRepository<DocumentTypes, Long> {
-    @Query("SELECT * FROM DocumentTypes")
-    List<Optional<DocumentTypes>> getDocumentType();
+    @Query(nativeQuery = true,value = "SELECT * FROM document_types")
+    List<DocumentTypes> getDocumentType();
 }

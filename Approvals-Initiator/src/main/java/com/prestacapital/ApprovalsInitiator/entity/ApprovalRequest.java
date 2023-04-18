@@ -1,5 +1,6 @@
 package com.prestacapital.ApprovalsInitiator.entity;
 
+import com.prestacapital.WorkflowAutomator.entity.DocumentTypes;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
