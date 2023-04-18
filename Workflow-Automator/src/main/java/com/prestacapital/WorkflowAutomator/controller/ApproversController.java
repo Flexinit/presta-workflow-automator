@@ -25,8 +25,8 @@ public class ApproversController {
         return approversService.addNewApprover(approver);
     }
 
-    @GetMapping("getApproverByDocumentType/{documentType}")
-    public List<Optional<Approvers>> getApproverByDocumentType(@PathVariable DocumentTypes documentType){
-        return approversService.getApproverByDocumentType(documentType);
+    @GetMapping("/getApproverByDocumentType/{documentType}")
+    public List<Optional<Approvers>> getApproverByDocumentType(@PathVariable("documentType") Long documentTypeId){
+        return approversService.getApproverByDocumentType(documentTypeId);
     }
 }

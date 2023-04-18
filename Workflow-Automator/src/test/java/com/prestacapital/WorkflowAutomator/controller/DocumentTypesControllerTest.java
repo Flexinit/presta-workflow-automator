@@ -13,7 +13,6 @@ import com.prestacapital.WorkflowAutomator.service.DocumentTypeService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -29,9 +28,9 @@ class DocumentTypesControllerTest {
         //   Diffblue AI was unable to find a test
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
         DocumentTypeRepository documentTypeRepository = mock(DocumentTypeRepository.class);
         when(documentTypeRepository.save((DocumentTypes) any())).thenReturn(documentTypes);
@@ -39,9 +38,9 @@ class DocumentTypesControllerTest {
                 new DocumentTypeService(documentTypeRepository));
 
         DocumentTypes documentTypes1 = new DocumentTypes();
-        documentTypes1.setDocumentDescription("Document Description");
-        documentTypes1.setDocumentId("42");
-        documentTypes1.setDocumentName("Document Name");
+        documentTypes1.setDocumentTypeDescription("Document Description");
+        documentTypes1.setDocumentTypeId("42");
+        documentTypes1.setDocumentTypeName("Document Name");
         documentTypes1.setId(123L);
         assertSame(documentTypes, documentTypesController.addNewDocumentType(documentTypes1));
         verify(documentTypeRepository).save((DocumentTypes) any());
@@ -68,9 +67,9 @@ class DocumentTypesControllerTest {
         DocumentTypesController documentTypesController = new DocumentTypesController(null);
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
         documentTypesController.addNewDocumentType(documentTypes);
     }

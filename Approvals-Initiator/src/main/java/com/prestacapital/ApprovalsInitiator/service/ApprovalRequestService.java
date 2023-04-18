@@ -23,7 +23,7 @@ public class ApprovalRequestService {
     }
 
     public ApprovalRequest makeApprovalRequest(ApprovalRequest approvalRequest) {
-        approvalRequest.createdAt = Utils.getCurrentDateTime();
+        approvalRequest.createdAt = Utils.getCurrentDateTime.apply(null);
         return approvalRequestRepository.save(approvalRequest);
     }
 

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.function.Function;
 
 public  class Utils {
 
@@ -14,4 +15,10 @@ public  class Utils {
         return cal.getTime();
 
     }
+
+   /* public static Function<Void, Date> getCurrentDateTime = date -> {
+        Calendar cal = Calendar.getInstance();
+        return cal.getTime();
+    };*/
+
 }

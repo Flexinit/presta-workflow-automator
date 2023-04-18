@@ -35,9 +35,9 @@ class ApprovalRequestControllerTest {
 
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -48,9 +48,9 @@ class ApprovalRequestControllerTest {
                 new ApprovalRequestService(approvalRequestRepository));
 
         DocumentTypes documentTypes1 = new DocumentTypes();
-        documentTypes1.setDocumentDescription("Document Description");
-        documentTypes1.setDocumentId("42");
-        documentTypes1.setDocumentName("Document Name");
+        documentTypes1.setDocumentTypeDescription("Document Description");
+        documentTypes1.setDocumentTypeId("42");
+        documentTypes1.setDocumentTypeName("Document Name");
         documentTypes1.setId(123L);
 
         ApprovalRequest approvalRequest1 = new ApprovalRequest();
@@ -80,9 +80,9 @@ class ApprovalRequestControllerTest {
         ApprovalRequestController approvalRequestController = new ApprovalRequestController(null);
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -100,9 +100,9 @@ class ApprovalRequestControllerTest {
         //   Diffblue AI was unable to find a test
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -112,9 +112,9 @@ class ApprovalRequestControllerTest {
         ApprovalRequestController approvalRequestController = new ApprovalRequestController(approvalRequestService);
 
         DocumentTypes documentTypes1 = new DocumentTypes();
-        documentTypes1.setDocumentDescription("Document Description");
-        documentTypes1.setDocumentId("42");
-        documentTypes1.setDocumentName("Document Name");
+        documentTypes1.setDocumentTypeDescription("Document Description");
+        documentTypes1.setDocumentTypeId("42");
+        documentTypes1.setDocumentTypeName("Document Name");
         documentTypes1.setId(123L);
 
         ApprovalRequest approvalRequest1 = new ApprovalRequest();
@@ -133,9 +133,9 @@ class ApprovalRequestControllerTest {
         //   Diffblue AI was unable to find a test
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -159,9 +159,9 @@ class ApprovalRequestControllerTest {
                 new ApprovalRequestService(approvalRequestRepository));
 
         DocumentTypes documentTypes1 = new DocumentTypes();
-        documentTypes1.setDocumentDescription("Document Description");
-        documentTypes1.setDocumentId("42");
-        documentTypes1.setDocumentName("Document Name");
+        documentTypes1.setDocumentTypeDescription("Document Description");
+        documentTypes1.setDocumentTypeId("42");
+        documentTypes1.setDocumentTypeName("Document Name");
         documentTypes1.setId(123L);
 
         ApprovalRequest approvalRequest1 = new ApprovalRequest();
@@ -206,9 +206,9 @@ class ApprovalRequestControllerTest {
         ApprovalRequestController approvalRequestController = new ApprovalRequestController(null);
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -239,9 +239,9 @@ class ApprovalRequestControllerTest {
         //   Diffblue AI was unable to find a test
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -264,9 +264,9 @@ class ApprovalRequestControllerTest {
         ApprovalRequestController approvalRequestController = new ApprovalRequestController(approvalRequestService);
 
         DocumentTypes documentTypes1 = new DocumentTypes();
-        documentTypes1.setDocumentDescription("Document Description");
-        documentTypes1.setDocumentId("42");
-        documentTypes1.setDocumentName("Document Name");
+        documentTypes1.setDocumentTypeDescription("Document Description");
+        documentTypes1.setDocumentTypeId("42");
+        documentTypes1.setDocumentTypeName("Document Name");
         documentTypes1.setId(123L);
 
         ApprovalRequest approvalRequest1 = new ApprovalRequest();
@@ -357,9 +357,9 @@ class ApprovalRequestControllerTest {
         //   Diffblue AI was unable to find a test
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();
@@ -425,9 +425,9 @@ class ApprovalRequestControllerTest {
         //   Diffblue AI was unable to find a test
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentDescription("Document Description");
-        documentTypes.setDocumentId("42");
-        documentTypes.setDocumentName("Document Name");
+        documentTypes.setDocumentTypeDescription("Document Description");
+        documentTypes.setDocumentTypeId("42");
+        documentTypes.setDocumentTypeName("Document Name");
         documentTypes.setId(123L);
 
         ApprovalRequest approvalRequest = new ApprovalRequest();

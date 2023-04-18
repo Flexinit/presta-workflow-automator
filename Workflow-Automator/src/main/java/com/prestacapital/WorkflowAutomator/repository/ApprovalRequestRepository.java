@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface ApprovalRequestRepository extends JpaRepository<ApprovalRequest, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM ApprovalRequest r WHERE r.approved = ?1")
+    @Query(nativeQuery = true, value = "SELECT * FROM approval_request r WHERE r.approved = ?1")
     List<Optional<ApprovalRequest>> getApprovalrequestByStatus(Boolean approved);
 
 

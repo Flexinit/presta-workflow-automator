@@ -1,9 +1,12 @@
 package com.prestacapital.WorkflowAutomator.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Setter
@@ -18,10 +21,12 @@ public class Approvers {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.TABLE,
             generator = "approver_sequence"
     )
 
+    //@JsonIgnore
+    @ApiModelProperty(hidden = true)
     public Long id;
     public String approverId;
     public String firstName;
@@ -29,8 +34,9 @@ public class Approvers {
     public String emailAddress;
     public String phoneNumber;
     public String designation;
-    @ManyToOne
-    @JoinColumn(name = "document_type_id")
-    public DocumentTypes documentType;
+    //@ManyToOne(cascade = CascadeType.PERSIST)
+    //@JoinColumn(name = "document_type_id")
+    public Long documentTypeId;
 
+    public Date createdAt;
 }

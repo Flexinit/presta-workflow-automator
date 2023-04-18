@@ -17,6 +17,8 @@ public class DocumentTypeService {
         this.documentTypeRepository = documentTypeRepository;
     }
 
+
+
     public DocumentTypes addNewDocumentType(DocumentTypes documentTypes) {
         return documentTypeRepository.save(documentTypes);
     }

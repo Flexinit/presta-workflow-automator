@@ -25,9 +25,9 @@ public class ApprovalRequestController {
         return approvalRequestService.makeApprovalRequest(approvalRequest);
     }
 
-    @GetMapping("getApprovalRequestsByStatus/{approvalStatus}")
-    public List<Optional<ApprovalRequest>> getApprovalRequests(@PathVariable("approved") Boolean approved){
-        return approvalRequestService.getApprovalRequests(approved);
+    @GetMapping("/getApprovalRequestsByStatus/{isApproved}")
+    public List<Optional<ApprovalRequest>> getApprovalRequests(@PathVariable("isApproved") String approved){
+        return approvalRequestService.getApprovalRequests(Boolean.valueOf(approved));
     }
 
     @PutMapping("/approveOrReject")

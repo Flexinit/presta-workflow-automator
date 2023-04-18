@@ -1,5 +1,6 @@
 package com.prestacapital.WorkflowAutomator.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +21,11 @@ public class DocumentTypes {
             strategy = GenerationType.AUTO,
             generator = "doc_sequence"
     )
+    //@JsonIgnore
+    @ApiModelProperty(hidden = true)
     public Long id;
-    public String documentId;
-    public String documentName;
-    public String documentDescription;
+    public String documentTypeCode;
+    public String documentTypeName;
+    public String documentTypeDescription;
 
 }

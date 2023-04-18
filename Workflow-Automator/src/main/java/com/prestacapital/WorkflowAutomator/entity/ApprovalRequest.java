@@ -1,5 +1,8 @@
 package com.prestacapital.WorkflowAutomator.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,29 +24,26 @@ public class ApprovalRequest {
             strategy = GenerationType.SEQUENCE,
             generator = "approval_sequence"
     )
+    //@JsonIgnore
+    @ApiModelProperty(hidden = true)
     public Long id;
     public String requestId; //Used for tracking by requesting entity
-    @ManyToOne
-    @JoinColumn(name = "document_type_id")
-    public DocumentTypes documentType;
+    //@ManyToOne(cascade = CascadeType.PERSIST)
+    //@JoinColumn(name = "document_type_id" )
+    public Long documentTypeId;
     public String firstName;
     public String LastName;
     public String approvalStep;
     public String phoneNumber;
     public String emailAddress;
-    public Boolean approved;
+
+    @ApiModelProperty(hidden = true)
+    @Builder.Default
+    public Boolean approved = false;
     public String IDNumber;
     public String description;
+    @ApiModelProperty(hidden = true)
     public Date createdAt;
     public String createdBy;
-
-    public DocumentTypes getDocumentType() {
-        return documentType;
-    }
-
-    public void setDocumentType(DocumentTypes documentType) {
-        this.documentType = documentType;
-    }
-
 
 }

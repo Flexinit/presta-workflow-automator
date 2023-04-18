@@ -4,6 +4,7 @@ import com.prestacapital.WorkflowAutomator.Data.ApproveAction;
 import com.prestacapital.WorkflowAutomator.Utils.Utils;
 import com.prestacapital.WorkflowAutomator.entity.ApprovalRequest;
 import com.prestacapital.WorkflowAutomator.repository.ApprovalRequestRepository;
+import com.prestacapital.WorkflowAutomator.repository.DocumentTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -25,13 +26,20 @@ public class ApprovalRequestService {
     private RestTemplate restTemplate ;
 
     private RestTemplateBuilder restTemplateBuilder;
+    private final DocumentTypeRepository documentTypeRepository;
+
     @Autowired
-    public ApprovalRequestService(ApprovalRequestRepository approvalRequestRepository) {
+    public ApprovalRequestService(ApprovalRequestRepository approvalRequestRepository,
+                                  DocumentTypeRepository documentTypeRepository) {
         this.approvalRequestRepository = approvalRequestRepository;
+        this.documentTypeRepository = documentTypeRepository;
     }
 
     public ApprovalRequest makeApprovalRequest(ApprovalRequest approvalRequest) {
+        documentTypeRepository.findById(approvalRequest.documentTypeId)
+                .orElseThrow(()-> new IllegalStateException("The Document Type  with Id "+ approvalRequest.documentTypeId+ " does Not exist."));
         approvalRequest.createdAt = Utils.getCurrentDateTime();
+
         return approvalRequestRepository.save(approvalRequest);
     }
 
@@ -47,10 +55,8 @@ public class ApprovalRequestService {
                 .orElseThrow(()-> new IllegalStateException("The Approval Request  with Id "+ approveAction.approveRequestId+ " does Not exist."));
 
         if(Objects.equals(approveAction.approved, "Approve")){
-
             approvalRequest.setApproved(true);
-            sendApprovalNotificationToInitiator(approvalRequest);
-
+            //sendApprovalNotificationToInitiator(approvalRequest);
         }
 
         return approvalRequest;
