@@ -24,7 +24,11 @@ define tables and relationships without having to worry too much about RAW SQL s
 
 8. JUNIT and MOCKITO - These tools are very important in writing UNIT Tests to test whether the logic of the lines of code work as expected.
 
-8. Swagger - This tool is very handy in exposing the endpoints of the API for testing purposes
+8. Swagger - This tool is very handy in exposing the endpoints of the API for testing purposes 
+9. Docker - An Amazing tool for shipment and deployment of Software.
+    (Built Image using command "mvn spring-boot:build-image")
+
+
 
 
 
