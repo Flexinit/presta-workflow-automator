@@ -45,6 +45,17 @@ The System has the following functionaliy
 7. Filter Approval Requests
 8. Approve or Reject an Request.
 
+
+
+
+To Run the APplication
+-----------------------
+1. First Create Document Types 
+2. Create Approvers
+3. FIlter Approvers
+4. Filter Approval Requests
+5. Publish Approval
+6. Approve/ Reject
 NOTE//
 Clone the Repo, Run the application from the IDE and go to http://localhost:8081/swagger-ui.html to access the API.
 
