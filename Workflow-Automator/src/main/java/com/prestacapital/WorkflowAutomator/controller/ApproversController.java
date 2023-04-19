@@ -22,11 +22,11 @@ public class ApproversController {
 
     @PostMapping
     public Approvers addNewApprover(@RequestBody Approvers approver){
-        return approversService.addNewApprover(approver);
+        return approversService.addNewApprover.apply(approver);
     }
 
     @GetMapping("/getApproverByDocumentType/{documentType}")
     public List<Optional<Approvers>> getApproverByDocumentType(@PathVariable("documentType") Long documentTypeId){
-        return approversService.getApproverByDocumentType(documentTypeId);
+        return approversService.getApproverByDocumentType.apply(documentTypeId);
     }
 }

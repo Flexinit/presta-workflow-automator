@@ -13,9 +13,7 @@ class WorkflowAutomatorApplicationTest {
      */
     @Test
     void testSpringFoxConfigApi() {
-        //   Diffblue Cover was unable to write a Spring test,
-        //   so wrote a non-Spring test instead.
-        //   Diffblue AI was unable to find a test
+
 
         Docket actualApiResult = ((new WorkflowAutomatorApplication()).new SpringFoxConfig()).api();
         assertTrue(actualApiResult.isEnabled());
@@ -27,9 +25,6 @@ class WorkflowAutomatorApplicationTest {
      */
     @Test
     void testSpringFoxConfigApi2() {
-        //   Diffblue Cover was unable to write a Spring test,
-        //   so wrote a non-Spring test instead.
-        //   Diffblue AI was unable to find a test
 
         Docket actualApiResult = (mock(WorkflowAutomatorApplication.class).new SpringFoxConfig()).api();
         assertTrue(actualApiResult.isEnabled());

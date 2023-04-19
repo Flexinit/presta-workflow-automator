@@ -9,16 +9,10 @@ import java.util.function.Function;
 public  class Utils {
 
     public  static final String URL = "http://localhost:8090/approvals";
-    public static Date getCurrentDateTime(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    public static Function<Void, Date> getCurrentDateTime = date -> {
         Calendar cal = Calendar.getInstance();
         return cal.getTime();
-
-    }
-
-   /* public static Function<Void, Date> getCurrentDateTime = date -> {
-        Calendar cal = Calendar.getInstance();
-        return cal.getTime();
-    };*/
+    };
 
 }

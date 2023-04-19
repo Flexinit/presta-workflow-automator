@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class ApproversService {
-    private final ApproversRepository approversRepository;
-    private final ApprovalRequestRepository approvalRequestRepository;
-    private final DocumentTypeRepository documentTypeRepository;
+    private  ApproversRepository approversRepository;
+    private  ApprovalRequestRepository approvalRequestRepository;
+    private  DocumentTypeRepository documentTypeRepository;
 
     @Autowired
     public ApproversService(ApproversRepository approversRepository,
@@ -28,14 +29,13 @@ public class ApproversService {
         this.documentTypeRepository = documentTypeRepository;
     }
 
-    public Approvers addNewApprover(Approvers approver) {
+    public Function<Approvers, Approvers> addNewApprover =  approver -> {
          documentTypeRepository.findById(approver.documentTypeId)
                 .orElseThrow(()-> new IllegalStateException("The Document Type  with Id "+ approver.documentTypeId+ " does Not exist."));
-        approver.createdAt = Utils.getCurrentDateTime();
-        return approversRepository.save(approver);
-    }
+        approver.createdAt = Utils.getCurrentDateTime.apply(null);
 
-    public List<Optional<Approvers>> getApproverByDocumentType(Long documentTypeId) {
-        return approversRepository.getApproverByDocumentType(documentTypeId);
-    }
+        return approversRepository.save(approver);
+    };
+
+    public Function<Long, List<Optional<Approvers>>> getApproverByDocumentType = documentTypeId-> approversRepository.getApproverByDocumentType(documentTypeId);
 }

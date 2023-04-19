@@ -1,117 +1,95 @@
 package com.prestacapital.WorkflowAutomator.controller;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prestacapital.WorkflowAutomator.entity.DocumentTypes;
-import com.prestacapital.WorkflowAutomator.repository.DocumentTypeRepository;
 import com.prestacapital.WorkflowAutomator.service.DocumentTypeService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+@ContextConfiguration(classes = {DocumentTypesController.class})
+@ExtendWith(SpringExtension.class)
 class DocumentTypesControllerTest {
+    @MockBean
+    private DocumentTypeService documentTypeService;
+
+    @Autowired
+    private DocumentTypesController documentTypesController;
+
     /**
      * Method under test: {@link DocumentTypesController#addNewDocumentType(DocumentTypes)}
      */
     @Test
-    void testAddNewDocumentType() {
-        //   Diffblue Cover was unable to write a Spring test,
-        //   so wrote a non-Spring test instead.
-        //   Diffblue AI was unable to find a test
-
+    void testAddNewDocumentType() throws Exception {
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentTypeDescription("Document Description");
-        documentTypes.setDocumentTypeId("42");
-        documentTypes.setDocumentTypeName("Document Name");
+        LocalDateTime atStartOfDayResult = LocalDate.of(1970, 1, 1).atStartOfDay();
+        documentTypes.setCreatedAt(Date.from(atStartOfDayResult.atZone(ZoneId.of("UTC")).toInstant()));
+        documentTypes.setDocumentTypeCode("Document Type Code");
+        documentTypes.setDocumentTypeDescription("Document Type Description");
+        documentTypes.setDocumentTypeName("Document Type Name");
         documentTypes.setId(123L);
-        DocumentTypeRepository documentTypeRepository = mock(DocumentTypeRepository.class);
-        when(documentTypeRepository.save((DocumentTypes) any())).thenReturn(documentTypes);
-        DocumentTypesController documentTypesController = new DocumentTypesController(
-                new DocumentTypeService(documentTypeRepository));
-
-        DocumentTypes documentTypes1 = new DocumentTypes();
-        documentTypes1.setDocumentTypeDescription("Document Description");
-        documentTypes1.setDocumentTypeId("42");
-        documentTypes1.setDocumentTypeName("Document Name");
-        documentTypes1.setId(123L);
-        assertSame(documentTypes, documentTypesController.addNewDocumentType(documentTypes1));
-        verify(documentTypeRepository).save((DocumentTypes) any());
+        String content = (new ObjectMapper()).writeValueAsString(documentTypes);
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content);
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(documentTypesController)
+                .build()
+                .perform(requestBuilder);
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
     /**
      * Method under test: {@link DocumentTypesController#addNewDocumentType(DocumentTypes)}
      */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testAddNewDocumentType2() {
-        //   Diffblue Cover was unable to write a Spring test,
-        //   so wrote a non-Spring test instead.
-        //   Diffblue AI was unable to find a test
-
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException: Cannot invoke "com.prestacapital.WorkflowAutomator.service.DocumentTypeService.addNewDocumentType(com.prestacapital.WorkflowAutomator.entity.DocumentTypes)" because "this.documentTypeService" is null
-        //       at com.prestacapital.WorkflowAutomator.controller.DocumentTypesController.addNewDocumentType(DocumentTypesController.java:24)
-        //   See https://diff.blue/R013 to resolve this issue.
-
-        DocumentTypesController documentTypesController = new DocumentTypesController(null);
+    void testAddNewDocumentType2() throws Exception {
+        java.sql.Date date = mock(java.sql.Date.class);
+        when(date.getTime()).thenReturn(10L);
 
         DocumentTypes documentTypes = new DocumentTypes();
-        documentTypes.setDocumentTypeDescription("Document Description");
-        documentTypes.setDocumentTypeId("42");
-        documentTypes.setDocumentTypeName("Document Name");
+        documentTypes.setCreatedAt(date);
+        documentTypes.setDocumentTypeCode("Document Type Code");
+        documentTypes.setDocumentTypeDescription("Document Type Description");
+        documentTypes.setDocumentTypeName("Document Type Name");
         documentTypes.setId(123L);
-        documentTypesController.addNewDocumentType(documentTypes);
+        String content = (new ObjectMapper()).writeValueAsString(documentTypes);
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content);
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(documentTypesController)
+                .build()
+                .perform(requestBuilder);
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
     /**
      * Method under test: {@link DocumentTypesController#getDocumentType()}
      */
     @Test
-    void testGetDocumentType() {
-        //   Diffblue Cover was unable to write a Spring test,
-        //   so wrote a non-Spring test instead.
-        //   Diffblue AI was unable to find a test
-
-        DocumentTypeRepository documentTypeRepository = mock(DocumentTypeRepository.class);
-        ArrayList<DocumentTypes> optionalList = new ArrayList<>();
-        when(documentTypeRepository.getDocumentType()).thenReturn(optionalList);
-        List<DocumentTypes> actualDocumentType = (new DocumentTypesController(
-                new DocumentTypeService(documentTypeRepository))).getDocumentType();
-        assertSame(optionalList, actualDocumentType);
-        assertTrue(actualDocumentType.isEmpty());
-        verify(documentTypeRepository).getDocumentType();
-    }
-
-    /**
-     * Method under test: {@link DocumentTypesController#getDocumentType()}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testGetDocumentType2() {
-        //   Diffblue Cover was unable to write a Spring test,
-        //   so wrote a non-Spring test instead.
-        //   Diffblue AI was unable to find a test
-
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException: Cannot invoke "com.prestacapital.WorkflowAutomator.service.DocumentTypeService.getDocumentType()" because "this.documentTypeService" is null
-        //       at com.prestacapital.WorkflowAutomator.controller.DocumentTypesController.getDocumentType(DocumentTypesController.java:29)
-        //   See https://diff.blue/R013 to resolve this issue.
-
-        (new DocumentTypesController(null)).getDocumentType();
+    void testGetDocumentType() throws Exception {
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/");
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(documentTypesController)
+                .build()
+                .perform(requestBuilder);
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }
 

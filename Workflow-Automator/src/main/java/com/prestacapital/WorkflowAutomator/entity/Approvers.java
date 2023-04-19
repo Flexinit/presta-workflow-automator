@@ -25,18 +25,14 @@ public class Approvers {
             generator = "approver_sequence"
     )
 
-    //@JsonIgnore
     @ApiModelProperty(hidden = true)
-    public Long id;
-    public String approverId;
+    public Long id;//public String approverId;
     public String firstName;
     public String lastName;
     public String emailAddress;
     public String phoneNumber;
     public String designation;
-    //@ManyToOne(cascade = CascadeType.PERSIST)
-    //@JoinColumn(name = "document_type_id")
     public Long documentTypeId;
-
+    @ApiModelProperty(hidden = true)
     public Date createdAt;
 }

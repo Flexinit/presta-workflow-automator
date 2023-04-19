@@ -28,8 +28,6 @@ public class ApprovalRequest {
     @ApiModelProperty(hidden = true)
     public Long id;
     public String requestId; //Used for tracking by requesting entity
-    //@ManyToOne(cascade = CascadeType.PERSIST)
-    //@JoinColumn(name = "document_type_id" )
     public Long documentTypeId;
     public String firstName;
     public String LastName;

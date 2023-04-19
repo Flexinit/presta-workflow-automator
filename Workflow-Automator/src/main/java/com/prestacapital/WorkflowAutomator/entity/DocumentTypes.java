@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -21,11 +22,11 @@ public class DocumentTypes {
             strategy = GenerationType.AUTO,
             generator = "doc_sequence"
     )
-    //@JsonIgnore
     @ApiModelProperty(hidden = true)
     public Long id;
     public String documentTypeCode;
     public String documentTypeName;
     public String documentTypeDescription;
-
+    @ApiModelProperty(hidden = true)
+    public Date createdAt;
 }

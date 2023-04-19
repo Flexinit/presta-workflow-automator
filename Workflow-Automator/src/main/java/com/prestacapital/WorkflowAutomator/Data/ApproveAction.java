@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ApproveAction {
     public  Long approveRequestId;
-    public  String approverId;
+    public  Long approverId;
     public  String approved;
 }

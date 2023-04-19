@@ -1,6 +1,5 @@
 package com.prestacapital.WorkflowAutomator.controller;
 
-import com.prestacapital.WorkflowAutomator.entity.Approvers;
 import com.prestacapital.WorkflowAutomator.entity.DocumentTypes;
 import com.prestacapital.WorkflowAutomator.service.DocumentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,12 @@ public class DocumentTypesController {
 
     @PostMapping
     public DocumentTypes addNewDocumentType(@RequestBody DocumentTypes documentTypes){
-        return documentTypeService.addNewDocumentType(documentTypes);
+        return documentTypeService.addNewDocumentType.apply(documentTypes);
     }
 
     @GetMapping
-    public List<DocumentTypes> getDocumentType(){
-        return documentTypeService.getDocumentType();
+    public List<Optional<DocumentTypes>> getDocumentType(){
+        return documentTypeService.getDocumentType.apply(null);
     }
 
 }
